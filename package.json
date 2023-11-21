@@ -1,0 +1,22 @@
+{
+  "name": "sanbercode519",
+  "version": "1.0.0",
+  "description": "sanbercode cypress project kelompok 9",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keriwisnu/sanbercode519.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keriwisnu/sanbercode519/issues"
+  },
+  "homepage": "https://github.com/keriwisnu/sanbercode519#readme",
+  "dependencies": {
+    "cypress": "^13.5.1"
+  }
+}
