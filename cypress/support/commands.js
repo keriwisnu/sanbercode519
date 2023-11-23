@@ -24,10 +24,24 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-const userLogin = require('../fixtures/userLogin.json')
-const { email, password } = userLogin;
+// const userLogin = require('../fixtures/userLogin.json') #error parse kosong
+// const { email, password } = userLogin;
+// Cypress.Commands.add('login', (email, password) => {
+//     cy.get('#email').type(email)
+//     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
+//     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2').click()
+// })
+
+// Cypress.Commands.add('login', () => { #error parse kosong
+//     cy.get('#email').type(userLogin.email);
+//     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(userLogin.password);
+//     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2').click();
+// });
+
 Cypress.Commands.add('login', (email, password) => {
+    cy.get('.panel > .header > .authorization-link').click()
     cy.get('#email').type(email)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
-    cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2').click()
+    cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2 > span').click()
+    // cy.get('message')
 })

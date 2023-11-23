@@ -1,19 +1,7 @@
-const { defineConfig } = require("cypress");
-
-module.exports = defineConfig({
+module.exports = {
   e2e: {
-    baseUrl: 'https://magento.softwaretestingboard.com/',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    defaultCommandTimeout: 5500,
-    screenshotOnRunFailure: false,
-    chromeWebSecurity: false
   },
-});
-
-e2e: {
-  setupNodeEvents(on, config) {
-    // implement node event listeners here
-  },
-}
+};
