@@ -1,3 +1,6 @@
+// const userLogin = require('../fixtures/userLogin.json') 
+// const { email, password } = userLogin;
+
 describe('choose product', () => {
   // it('Success Login', () => {
   //   cy.visit('https://magento.softwaretestingboard.com/')
@@ -6,7 +9,7 @@ describe('choose product', () => {
   // })
   it('choose product', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
-    cy.login('idlytogame@gmail.com','K3ri,wisnu')
+    cy.login()
     cy.get(':nth-child(2) > .product-item-info > .product-item-details > .product-item-name > .product-item-link').click()
     cy.get('#option-label-size-143-item-166').click()
     cy.wait(2000)
