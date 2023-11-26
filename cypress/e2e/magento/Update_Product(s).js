@@ -1,3 +1,4 @@
+const qty_breathe = "2"
 describe('Update Product', () => {
     it('edit the size of the products in the cart', () => {
       cy.visit('')
@@ -41,4 +42,13 @@ describe('Update Product', () => {
         cy.get('.toggle').click()
         cy.get('.product > :nth-child(4) > span').should('have.text',"White")
         })
+        it('edit the qty of the products in the cart', () => {
+            cy.visit('')
+            cy.login()
+            cy.get('.showcart').click()
+            cy.get('#ui-id-1').should('be.visible')
+            cy.get('#cart-item-482286-qty').clear().type(qty_breathe)
+            cy.get('#update-cart-item-482286').click()
+            cy.get('.count').should('include.text', '2')
+            })
     })
