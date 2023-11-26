@@ -51,4 +51,15 @@ describe('Update Product', () => {
             cy.get('#update-cart-item-482286').click()
             cy.get('.count').should('include.text', '2')
             })
+            it('Delete a product when there is only 1 product in the cart', () => {
+                cy.visit('')
+                cy.login()
+                cy.get('.showcart').click()
+                cy.get('#ui-id-1').should('be.visible')
+                cy.get(':nth-child(1) > :nth-child(1) > .product-item-details > .actions > .secondary > .action').click()
+                cy.get('body > div.modals-wrapper > aside.modal-popup.confirm._show > div.modal-inner-wrap').should('be.visible')//pop up confirmation
+                cy.get('.action-primary').click() //klik button Oke
+                cy.wait(5000)
+                cy.get('/html/body/div[2]/header/div[2]/div[1]/a/span[2]/span[1]').should('not.be.visible')//verify qty's product on cart
+              })
     })
