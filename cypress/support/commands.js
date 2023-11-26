@@ -24,28 +24,28 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+ /// <reference types="Cypress" />
+
+
+
 
 var userLogin = require('../fixtures/userLogin.json') 
 var { email, password } = userLogin;
 
-Cypress.Commands.add('login', () => {
+//cara login 1
+Cypress.Commands.add('login1', () => {
     cy.get('.panel > .header > .authorization-link').click()
+    cy.wait(1000)
     cy.get('#email').type(email)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2').click()
 })
 
-
-// Cypress.Commands.add('login', () => { #error parse kosong
-//     cy.get('#email').type(userLogin.email);
-//     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(userLogin.password);
-//     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2').click();
-// });
-
-// Cypress.Commands.add('login', (email, password) => {
-//     cy.get('.panel > .header > .authorization-link').click()
-//     cy.get('#email').type(email)
-//     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
-//     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2 > span').click()
-//     // cy.get('message')
-// })
+//cara login 2
+Cypress.Commands.add('login2', (email, password) => {
+    cy.get('.panel > .header > .authorization-link').click()
+    cy.wait(1000)
+    cy.get('#email').type(email)
+    cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
+    cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2 > span').click()
+})
