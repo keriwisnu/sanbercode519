@@ -10,6 +10,7 @@ describe('login', () => {
     cy.get('#email').type(data_login.email)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(data_login.password)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2 > span').click()
+    cy.wait(20000)
     cy.get(':nth-child(2) > .greet > .logged-in').should('have.text','Welcome, Nelly Testing!')
   })
 })
