@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+var Login = require('../fixtures/data_login.json') 
+var { email, password } = Login;
+
+Cypress.Commands.add('login', () => {
+    cy.get('.panel > .header > .authorization-link').click()
+    cy.get('#email').type(email)
+    cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
+    cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2').click()
+    cy.wait(5000)
+    cy.get(':nth-child(2) > .greet > .logged-in').should('have.text','Welcome, Nelly Testing!')
+})
