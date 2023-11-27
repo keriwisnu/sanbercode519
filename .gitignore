@@ -1,5 +1,5 @@
 node_modules
+cypress/e2e/2-advanced-examples
 cypress/videos
 cypress/screenshots
 js/*.js
-cypress\e2e\2-advanced-examples
