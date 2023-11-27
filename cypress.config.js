@@ -8,7 +8,11 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     baseUrl: "https://magento.softwaretestingboard.com/",
-    testIsolation: false,
+    //testIsolation: false,
     experimentalStudio: true,
+    env: {
+      username: "ritter@tester.com",
+      password: "Sanber51"
+    },
   },
 });
