@@ -1,22 +1,3 @@
-// describe('choose product', () => {
-//   it ('positive - check all menu per cateogry', () =>{
-//     cy.visit('')
-//     // cy.login()
-//     //#validate category
-//     cy.get('#ui-id-3').click()
-//     cy.wait(100)
-//     cy.get('#ui-id-4').click()
-//     cy.get('#ui-id-11').trigger('mouseover').click()
-//     cy.get('#ui-id-12').trigger('mouseover').click()
-//     cy.get('#ui-id-13').trigger('mouseover').click()
-//     cy.get('#ui-id-14').trigger('mouseover').click()
-//     cy.wait(100)
-//     cy.get('#ui-id-13').trigger('mouseover').click()
-//     cy.get('#ui-id-14').trigger('mouseover').click()
-//   })
-// })
-
-//done
 describe('negative - select product', () => {
   beforeEach('login',() => {
     cy.wait(2000)
@@ -62,7 +43,7 @@ describe('negative - select product', () => {
   })
 })
 
-//done
+
 describe('positive - select product', () => {
   it('positive - select product', () => {
     cy.visit('')
@@ -90,7 +71,6 @@ describe('positive - select product', () => {
   })
 })
  
-//done
 describe('verify searchbar', () => {
   it('negative - verifify searchbar, minimum search query lenght 3', () => {
     cy.visit('')
@@ -130,7 +110,6 @@ describe('verify searchbar', () => {
   })
 })
 
-//done
 describe('add whistlist', () => {
   it('negative - add whistlist', () => {
     cy.visit('')
@@ -163,7 +142,6 @@ describe('add whistlist', () => {
   })
 })
 
-//done
 describe('add review', () => {
   it('negative - add review', () => {
     cy.visit('')
@@ -171,12 +149,13 @@ describe('add review', () => {
     cy.login2('idlytogame@gmail.com','K3ri,wisnu')
     cy.wait(1000)
     cy.get(':nth-child(2) > .product-item-info > .product-item-details > .product-item-name > .product-item-link').click()
+    cy.wait(1000)
     cy.get('#tab-label-reviews-title').click()
     cy.wait(1000)
     cy.get('.actions-primary > .action > span').click()
-    cy.wait(500)
+    cy.wait(1000)
     cy.xpath('//*[@id="summary_field-error"]').should('contain.text','This is a required field.')
-    cy.wait(500)
+    cy.wait(1000)
     cy.xpath('//*[@id="review_field-error"]').should('contain.text','This is a required field.')
     cy.wait(2000)
   })
@@ -186,10 +165,15 @@ describe('add review', () => {
     cy.login1()
     cy.wait(1000)
     cy.get(':nth-child(2) > .product-item-info > .product-item-details > .product-item-name > .product-item-link').click()
+    cy.wait(1000)
     cy.get('#tab-label-reviews-title').click()
+    cy.wait(1000)
     cy.get('#Rating_5').click({ force: true });
+    cy.wait(1000)
     cy.get('#summary_field').type('this is good item')
+    cy.wait(1000)
     cy.get('#review_field').type('this breathe-easy tank was so freakin good')
+    cy.wait(1000)
     cy.get('.actions-primary > .action').click()
     cy.wait(1000)
     cy.xpath('//*[@id="maincontent"]/div[1]/div[2]/div/div/div').should('contain.text','You submitted your review for moderation.')
@@ -197,7 +181,6 @@ describe('add review', () => {
   })
 })
 
-//done
 describe('add to compare', () => {
   it('positive - add compare', () => {
     cy.visit('')
@@ -206,14 +189,14 @@ describe('add to compare', () => {
     cy.get(':nth-child(2) > .product-item-info > .product-item-details > .product-item-name > .product-item-link').click()
     cy.wait(2000)
     cy.xpath('//*[@id="maincontent"]/div[2]/div/div[1]/div[5]/div/a[2]').click()
-    cy.wait(1000)
+    cy.wait(2000)
     cy.get('.message-success > div')
     .invoke('text')
     .then(text => { 
       expect(text.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim())
         .to.contains('You added product Breathe-Easy Tank to the comparison list')
     })
-    cy.wait(1000)
+    cy.wait(2000)
     cy.get('.message-success > div > a').click()
     cy.get('.page-title-wrapper').should('contain.text','Compare Products')
     cy.wait(2000)
@@ -225,15 +208,14 @@ describe('add to compare', () => {
     cy.get(':nth-child(2) > .product-item-info > .product-item-details > .product-item-name > .product-item-link').click()
     cy.wait(2000)
     cy.xpath('//*[@id="maincontent"]/div[2]/div/div[1]/div[5]/div/a[2]').click()
-    cy.wait(1000)
+    cy.wait(2000)
     cy.get('.message-success > div > a').click()
-    cy.wait(1000)
+    cy.wait(2000)
     cy.get('.product > .action').click()
-    cy.wait(1000)
+    cy.wait(2000)
     cy.get('.action-primary > span').click()
-    cy.wait(100)
+    cy.wait(2000)
     cy.get('.column > .message > div').should('contain.text','You have no items to compare')
     cy.wait(2000)
   })
 })
-
