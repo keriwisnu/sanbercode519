@@ -4,7 +4,9 @@
   "description": "sanbercode cypress project kelompok 9",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "login": "npx cypress run --browser chrome --spec 'cypress/e2e/web/magento/login.cy.js'",
+    "viewproduct": "npx cypress run --browser chrome --spec 'cypress/e2e/web/magento/viewproduct.cy.js'"
   },
   "repository": {
     "type": "git",

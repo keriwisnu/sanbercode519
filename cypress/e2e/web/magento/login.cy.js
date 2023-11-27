@@ -1,6 +1,6 @@
 describe('Verify magento-demo login', () => {
   it('Failed login - Invalid email', () => {
-    cy.visit('https://magento.softwaretestingboard.com/')
+    cy.visit('')
     cy.get('.panel > .header > .authorization-link').click()
     cy.get('#email').type('sakl@gmail.com')
     cy.get('#pass').type('123@5H')
@@ -8,7 +8,7 @@ describe('Verify magento-demo login', () => {
     cy.get('.message-error > div').should('contain', 'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
   })
   it('Failed login - Invalid Password', () => {
-    cy.visit('https://magento.softwaretestingboard.com/')
+    cy.visit('')
     cy.get('.panel > .header > .authorization-link').click()
     cy.get('#email').type('terusbelajary@gmail.com')
     cy.get('#pass').type('123456')
@@ -16,9 +16,9 @@ describe('Verify magento-demo login', () => {
     cy.get('.message-error > div').should('contain', 'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
   })
   it('Failed login - email empty', () => {
-    cy.visit('https://magento.softwaretestingboard.com/')
+    cy.visit('')
     cy.get('.panel > .header > .authorization-link').click()
-    //cy.get('#email').click()
+    cy.get('#email').click()
     cy.get('#pass').type('123@5H')
     cy.get('.action.login.primary').click()
     cy.get('.message-error > div').should('contain', 'Invalid Form Key. Please refresh the page.')
@@ -26,17 +26,17 @@ describe('Verify magento-demo login', () => {
     //cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .email> .control > #email').should('contain', 'This is a required field.')
   })
   it('Failed login - password empty', () => {
-    cy.visit('https://magento.softwaretestingboard.com/')
+    cy.visit('')
     cy.get('.panel > .header > .authorization-link').click()
     cy.get('#email').type('terusbelajary@gmail.com')
-    //cy.get('#pass').click()
+    cy.get('#pass').click()
     cy.get('.action.login.primary').click()
     cy.get('.message-error > div').should('contain', 'Invalid Form Key. Please refresh the page.')
     //cy.get('#email-error').should('contain', 'This is a required field.')
     //cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').should('contain', 'This is a required field.')
   })
   it('Succes login', () => {
-    cy.visit('https://magento.softwaretestingboard.com/')
+    cy.visit('')
     cy.get('.panel > .header > .authorization-link').click()
     cy.get('#email').type('terusbelajary@gmail.com')
     cy.get('#pass').type('A123456#')
