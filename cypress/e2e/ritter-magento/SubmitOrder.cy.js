@@ -11,16 +11,16 @@ describe("Submit Order", () => {
 
     it("Select a product", () => {
         //choose a product to purchase until checkout
-        cy.visit('')
+        cy.visit('wewewewe')
         cy.get('#ui-id-5 > :nth-child(2)').click()
         cy.get('dd > .items > :nth-child(1) > a').click()
-        cy.wait(5000)
+        cy.wait(3000)
         cy.get(':nth-child(1) > .product-item-info > .details > .name > .product-item-link').click()
-        cy.wait(5000)
+        cy.wait(3000)
         cy.get('#option-label-size-143-item-170').click() //choose product size
-        cy.wait(5000)
+        cy.wait(3000)
         cy.get('#option-label-color-93-item-50').click() //choose product color
-        cy.wait(5000)
+        cy.wait(3000)
         cy.get('#product-addtocart-button > span').click()
         cy.get('.message-success > div').should('contain.text', 'You added Cassius Sparring Tank to your shopping cart.')
         cy.wait(10000)
@@ -34,7 +34,7 @@ describe("Submit Order", () => {
     it("Checkout", () => {
         //checkout process until order successfully submitted
         cy.visit('https://magento.softwaretestingboard.com/checkout/#shipping')
-        cy.wait(5000)
+        cy.wait(3000)
         cy.get('.new-address-popup > .action > span').click() //add new address instead using the saved address
         cy.wait(500)
         cy.fixture('shipping.json').then((shipping) => {
@@ -47,20 +47,24 @@ describe("Submit Order", () => {
             cy.get('#shipping-save-in-address-book').uncheck()
             cy.get('button.action-save-address').contains('Ship here').click()
             cy.wait(500)
-            cy.get('input[type="radio"][value="flatrate_flatrate"]').check() //choose the shipping options
-            cy.get('button[data-role="opc-continue"]').contains('Next').click()
-            cy.wait(5000)
-            cy.url().should("include", "/checkout/#payment")
-            cy.get('.payment-group > .step-title').should('exist').and('contain', 'Payment Method')
-            cy.get('span.title').should('exist').and('have.text', 'Order Summary')
-            cy.get('.sub > .mark').should('exist').and('have.text', 'Cart Subtotal')
-            cy.get('.payment-method-content > :nth-child(4) > div.primary > .action > span').click()
-            cy.wait(5000)
-            cy.url().should("include", "success")
-            cy.get(".base").should("contain.text", "Thank you for your purchase!")
-            cy.get('.order-number').should('exist')
-            cy.get('.checkout-success > .actions-toolbar > div.primary > .action > span').should('exist').and('have.text', 'Continue Shopping')
         })
+        cy.get('button.action.action-select-shipping-item').contains('Ship Here').click() //change to use the saved address
+        cy.wait(500)
+        cy.get('input[type="radio"][value="flatrate_flatrate"]').check() //choose the flat rate shipping options
+        cy.wait(500)
+        cy.get('input[type="radio"][value="tablerate_bestway"]').check() //choose the best way shipping options
+        cy.get('button[data-role="opc-continue"]').contains('Next').click()
+        cy.wait(3000)
+        cy.url().should("include", "/checkout/#payment")
+        cy.get('.payment-group > .step-title').should('exist').and('contain', 'Payment Method')
+        cy.get('.shipping-information-content').should('exist').and('contain', 'Texas') //check using saved address
+        cy.get('span.title').should('exist').and('have.text', 'Order Summary')
+        cy.get('.sub > .mark').should('exist').and('have.text', 'Cart Subtotal')
+        cy.get('.payment-method-content > :nth-child(4) > div.primary > .action > span').click()
+        cy.wait(3000)
+        cy.url().should("include", "success")
+        cy.get(".base").should("contain.text", "Thank you for your purchase!")
+        cy.get('.order-number').should('exist')
+        cy.get('.checkout-success > .actions-toolbar > div.primary > .action > span').should('exist').and('have.text', 'Continue Shopping')
     })
 })
-
