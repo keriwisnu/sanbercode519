@@ -18,5 +18,8 @@
   "homepage": "https://github.com/keriwisnu/sanbercode519#readme",
   "dependencies": {
     "cypress": "^13.5.1"
+  },
+  "devDependencies": {
+    "cypress-xpath": "^2.0.1"
   }
 }

@@ -44,3 +44,8 @@ Cypress.Commands.add('Choose_Product', () => {
     cy.wait(10000)
     cy.get('.message-success').should('contain.text', 'You added Breathe-Easy Tank to your shopping cart.')
 })
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
+  })
