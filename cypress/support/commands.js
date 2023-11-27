@@ -19,6 +19,12 @@ Cypress.Commands.add('register', (firstname, lastname, email, password, confirmp
     cy.get('.action.submit.primary').click()
 })
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
+  })
+
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //

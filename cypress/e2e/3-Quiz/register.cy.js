@@ -1,5 +1,9 @@
 // const UserRegistrasi = require('../../../fixtures/UserRegistrasi.json')
 // const userData = require('../../../fixtures/userData.json')
+// const { default: registerPage } = require("../../support/pageRegister/registerPage")
+
+import registerPage from "../../support/pageRegister/registerPage"
+
 
 // this case for positive case
 describe('positive case', () => {
@@ -16,29 +20,30 @@ describe('positive case', () => {
     // cy.get('#password').type('Dianfilia123#')
     // cy.get('#password-confirmation').type('Dianfilia123#')
     // cy.get('.action.submit.primary').click()
+    cy.get(registerPage.crt_btn).click()
+    cy.wait(2000)
     cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
   })
 })
 
+
 // this case for negative case
 describe('negative case', () => {
   beforeEach(() => {
-    cy.visit('')
-    
+    cy.visit('')    
   })
-  
 
-  it.only('using the same email', () => {
+  it('using the same email', () => {
     // create user failed due to using the same email
     cy.fixture('userData.json').then((userData) => {
       cy.get('#firstname').type(userData.firstname)
       cy.get('#lastname').type(userData.lastname)
     })
-
     cy.get('#email_address').type('dianmatondang012@gmail.com')
     cy.get('#password').type('Agungmtd123#')
     cy.get('#password-confirmation').type('Agungmtd123#')
-    cy.get('.action.submit.primary').click()
+    cy.get(registerPage.crt_btn).click()
+    cy.wait(2000)
     cy.get('.message-error').should('contain', 'There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.')
     cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
   })
@@ -47,22 +52,42 @@ describe('negative case', () => {
     // create user failed due to a weak password
     cy.get('#firstname').type('Agung')
     cy.get('#lastname').type('Matondang')
-    cy.get('#email_address').type('dianmatondang112@gmail.com')
+    cy.get('#email_address').type('dianmatondang12@gmail.com')
     cy.get('#password').type('Agungmtd')
     cy.get('#password-confirmation').type('Agungmtd')
-    cy.get('.action.submit.primary').click()
+    cy.get(registerPage.crt_btn).click()
+    cy.wait(2000)
     cy.get('#password-error').should('contain', 'Minimum of different classes of characters in password is 3. Classes of characters: Lower Case, Upper Case, Digits, Special Characters.')
     cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
   })
 
+
   it('different password length', () => {
     // create user failed because the length of the password and confirm password are different
-    cy.get('#firstname').type('Agung')
-    cy.get('#lastname').type('Matondang')
+    cy.fixture('userData.json').then((userData) => {
+      cy.get('#firstname').type(userData.firstname)
+      cy.get('#lastname').type(userData.lastname)
+    })
     cy.get('#email_address').type('dianmatondang112@gmail.com')
-    cy.get('#password').type('Agungmtd123#')
-    cy.get('#password-confirmation').type('Agungmtd')
-    cy.get('.action.submit.primary').click()
+    cy.get('#password').type('Dianmtd123#')
+    cy.get('#password-confirmation').type('Dianmtd')
+    cy.get(registerPage.crt_btn).click()
+    cy.wait(2000)
+    cy.get('#password-confirmation-error').should('contain', 'Please enter the same value again.')
+    cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
+  })
+
+  it('different password', () => {
+    // create user failed because the password and confirm password are different
+    cy.fixture('userData.json').then((userData) => {
+      cy.get('#firstname').type(userData.firstname)
+      cy.get('#lastname').type(userData.lastname)
+    })
+    cy.get('#email_address').type('dianmatondang112@gmail.com')
+    cy.get('#password').type('Dianmtd123#')
+    cy.get('#password-confirmation').type('Dianmtd123@')
+    cy.get(registerPage.crt_btn).click()
+    cy.wait(2000)
     cy.get('#password-confirmation-error').should('contain', 'Please enter the same value again.')
     cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
   })
@@ -72,9 +97,52 @@ describe('negative case', () => {
     cy.get('#email_address').type('dianmatondang112@gmail.com')
     cy.get('#password').type('Agungmtd')
     cy.get('#password-confirmation').type('Agungmtd')
-    cy.get('.action.submit.primary').click()
+    cy.get(registerPage.crt_btn).click()
+    cy.wait(2000)
     cy.get('#firstname-error').should('contain', 'This is a required field.')
     cy.get('#lastname-error').should('contain', 'This is a required field.')
+    cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
+  })
+
+  it('empty email', () => {
+    // create user failed due to missing email
+    cy.fixture('userData.json').then((userData) => {
+      cy.get(registerPage.firstnm).type(userData.firstname)
+      cy.get(registerPage.lastnm).type(userData.lastname)
+    })
+    cy.get('#password').type('Agungmtd123#')
+    cy.get('#password-confirmation').type('Agungmtd123#')
+    cy.get(registerPage.crt_btn).click()
+    cy.wait(2000)
+    cy.get('#email_address-error').should('contain', 'This is a required field.')
+    cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
+  })
+
+  it('empty password', () => {
+    // create user failed because password was not filled in
+    cy.fixture('userData.json').then((userData) => {
+      cy.get(registerPage.firstnm).type(userData.firstname)
+      cy.get(registerPage.lastnm).type(userData.lastname)
+    })
+    cy.get('#email_address').type('dianmatondang112@gmail.com')
+    cy.get('#password-confirmation').type('Agungmtd123#')
+    cy.get(registerPage.crt_btn).click()
+    cy.wait(2000)
+    cy.get('#password-error').should('contain', 'This is a required field.')
+    cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
+  })
+
+  it('empty confirm password', () => {
+    // create user failed because confirm password was not filled in
+    cy.fixture('userData.json').then((userData) => {
+      cy.get(registerPage.firstnm).type(userData.firstname)
+      cy.get(registerPage.lastnm).type(userData.lastname)
+    })
+    cy.get('#email_address').type('dianmatondang112@gmail.com')
+    cy.get('#password').type('Agungmtd123#')
+    cy.get(registerPage.crt_btn).click()
+    cy.wait(2000)
+    cy.get('#password-confirmation-error').should('contain', 'This is a required field.')
     cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
   })
 
