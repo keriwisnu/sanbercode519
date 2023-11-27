@@ -97,3 +97,20 @@ describe('Update Product - Edit Size', () => {
               cy.xpath('//*[@id="super_attribute[143]-error"]').should('contain.text','This is a required field.')
               })
             })
+            describe('Update Product - Edit Unselecting Products Color',()=>{
+              it('edit the product in the cart by unselecting the product color', () => {
+                cy.visit('')
+                cy.login()
+                cy.Choose_Product()
+                cy.get('.showcart').click()
+                cy.get('#ui-id-1').should('be.visible')
+                cy.get('.product-item-details > .actions > .primary').click()
+                cy.get('.base').should('have.text', 'Breathe-Easy Tank')
+                cy.wait(8000)
+                cy.get('#option-label-color-93-item-57').click()//unselecting a color
+                cy.wait(5000)
+                cy.get('#product-updatecart-button').click()
+                cy.wait(8000)
+                cy.xpath('//*[@id="super_attribute[93]-error"]').should('contain.text','This is a required field.')
+                })
+              })
