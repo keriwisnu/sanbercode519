@@ -1,5 +1,5 @@
 // const UserRegistrasi = require('../../../fixtures/UserRegistrasi.json')
-const userData = require('../../../fixtures/userData.json')
+// const userData = require('../../../fixtures/userData.json')
 
 // this case for positive case
 describe('positive case', () => {
@@ -26,11 +26,15 @@ describe('negative case', () => {
     cy.visit('')
     
   })
+  
 
-  it('using the same email', () => {
+  it.only('using the same email', () => {
     // create user failed due to using the same email
-    cy.get('#firstname').type(userData.firstname)
-    cy.get('#lastname').type(userData.lastname)
+    cy.fixture('userData.json').then((userData) => {
+      cy.get('#firstname').type(userData.firstname)
+      cy.get('#lastname').type(userData.lastname)
+    })
+
     cy.get('#email_address').type('dianmatondang012@gmail.com')
     cy.get('#password').type('Agungmtd123#')
     cy.get('#password-confirmation').type('Agungmtd123#')
