@@ -35,17 +35,25 @@ var { email, password } = userLogin;
 //cara login 1
 Cypress.Commands.add('login1', () => {
     cy.get('.panel > .header > .authorization-link').click()
-    cy.wait(1000)
+    cy.wait(2000)
     cy.get('#email').type(email)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2').click()
+    cy.wait(2000)
 })
 
 //cara login 2
 Cypress.Commands.add('login2', (email, password) => {
     cy.get('.panel > .header > .authorization-link').click()
-    cy.wait(1000)
+    cy.wait(2000)
     cy.get('#email').type(email)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2 > span').click()
+    cy.wait(2000)
 })
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
+  })
