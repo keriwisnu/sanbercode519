@@ -1,13 +1,12 @@
 
-
-describe('Verify LUMA Create User Functionality', () => {
+// this case for positive case
+describe('positive case', () => {
   beforeEach(() => {
     cy.visit('https://magento.softwaretestingboard.com/customer/account/create/')
-    
+
   })
 
   it('success create user', () => {
-    // cy.get('a[href*="https://magento.softwaretestingboard.com/customer/account/create/"]').click()
     cy.get('#firstname').type('Dian')
     cy.get('#lastname').type('Matondang')
     cy.get('#email_address').type('dianmatondang012@gmail.com')
@@ -15,6 +14,14 @@ describe('Verify LUMA Create User Functionality', () => {
     cy.get('#password-confirmation').type('Dianfilia123#')
     cy.get('.action.submit.primary').click()
     cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
+  })
+})
+
+// this case for negative case
+describe('negative case', () => {
+  beforeEach(() => {
+    cy.visit('https://magento.softwaretestingboard.com/customer/account/create/')
+    
   })
 
   it('using the same email', () => {
@@ -42,7 +49,7 @@ describe('Verify LUMA Create User Functionality', () => {
   })
 
   it('different password length', () => {
-    // create user failed due to a weak password
+    // create user failed because the length of the password and confirm password are different
     cy.get('#firstname').type('Agung')
     cy.get('#lastname').type('Matondang')
     cy.get('#email_address').type('dianmatondang112@gmail.com')
@@ -53,6 +60,16 @@ describe('Verify LUMA Create User Functionality', () => {
     cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
   })
 
+  it('blank personal information', () => {
+    // create user failed due to missing personal information
+    cy.get('#email_address').type('dianmatondang112@gmail.com')
+    cy.get('#password').type('Agungmtd')
+    cy.get('#password-confirmation').type('Agungmtd')
+    cy.get('.action.submit.primary').click()
+    cy.get('#firstname-error').should('contain', 'This is a required field.')
+    cy.get('#lastname-error').should('contain', 'This is a required field.')
+    cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
+  })
 
 })
 
