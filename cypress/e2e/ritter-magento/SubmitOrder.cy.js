@@ -11,7 +11,7 @@ describe("Submit Order", () => {
 
     it("Select a product", () => {
         //choose a product to purchase until checkout
-        cy.visit('wewewewe')
+        cy.visit('')
         cy.get('#ui-id-5 > :nth-child(2)').click()
         cy.get('dd > .items > :nth-child(1) > a').click()
         cy.wait(3000)
@@ -37,6 +37,7 @@ describe("Submit Order", () => {
         cy.wait(3000)
         cy.get('.new-address-popup > .action > span').click() //add new address instead using the saved address
         cy.wait(500)
+        //get data to input from fixture
         cy.fixture('shipping.json').then((shipping) => {
             cy.get('input[name="street[0]"]').type(shipping.address)
             cy.get('input[name="city"]').type(shipping.city)
@@ -62,7 +63,7 @@ describe("Submit Order", () => {
         cy.get('.sub > .mark').should('exist').and('have.text', 'Cart Subtotal')
         cy.get('.payment-method-content > :nth-child(4) > div.primary > .action > span').click()
         cy.wait(3000)
-        cy.url().should("include", "success")
+        cy.url().should("include", "success") //order success page
         cy.get(".base").should("contain.text", "Thank you for your purchase!")
         cy.get('.order-number').should('exist')
         cy.get('.checkout-success > .actions-toolbar > div.primary > .action > span').should('exist').and('have.text', 'Continue Shopping')
