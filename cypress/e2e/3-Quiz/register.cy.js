@@ -1,18 +1,21 @@
+// const UserRegistrasi = require('../../../fixtures/UserRegistrasi.json')
+const userData = require('../../../fixtures/userData.json')
 
 // this case for positive case
 describe('positive case', () => {
   beforeEach(() => {
-    cy.visit('https://magento.softwaretestingboard.com/customer/account/create/')
+    cy.visit('')
 
   })
 
   it('success create user', () => {
-    cy.get('#firstname').type('Dian')
-    cy.get('#lastname').type('Matondang')
-    cy.get('#email_address').type('dianmatondang012@gmail.com')
-    cy.get('#password').type('Dianfilia123#')
-    cy.get('#password-confirmation').type('Dianfilia123#')
-    cy.get('.action.submit.primary').click()
+    cy.register('Dian', 'Matondang', 'dianmatondang012@gmail.com', 'Dianfilia123#', 'Dianfilia123#')
+    // cy.get('#firstname').type('Dian')
+    // cy.get('#lastname').type('Matondang')
+    // cy.get('#email_address').type('dianmatondang012@gmail.com')
+    // cy.get('#password').type('Dianfilia123#')
+    // cy.get('#password-confirmation').type('Dianfilia123#')
+    // cy.get('.action.submit.primary').click()
     cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
   })
 })
@@ -20,14 +23,14 @@ describe('positive case', () => {
 // this case for negative case
 describe('negative case', () => {
   beforeEach(() => {
-    cy.visit('https://magento.softwaretestingboard.com/customer/account/create/')
+    cy.visit('')
     
   })
 
   it('using the same email', () => {
     // create user failed due to using the same email
-    cy.get('#firstname').type('Agung')
-    cy.get('#lastname').type('Matondang')
+    cy.get('#firstname').type(userData.firstname)
+    cy.get('#lastname').type(userData.lastname)
     cy.get('#email_address').type('dianmatondang012@gmail.com')
     cy.get('#password').type('Agungmtd123#')
     cy.get('#password-confirmation').type('Agungmtd123#')
