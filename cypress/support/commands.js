@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+var loginUser = require('../fixtures/loginUser.json') 
+var { email, password } = loginUser;
+
+Cypress.Commands.add('login', () => {
+    cy.get('.panel > .header > .authorization-link').click()
+    cy.get('#email').type(email)
+    cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
+    cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2').click()
+})
