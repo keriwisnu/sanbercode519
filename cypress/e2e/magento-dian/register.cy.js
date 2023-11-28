@@ -123,9 +123,9 @@ describe('negative case', () => {
     // create user failed due to missing personal information
     cy.get('#email_address').type('dianmatondang112@gmail.com')
     cy.wait(2000)
-    cy.get('#password').type('Agungmtd')
+    cy.get('#password').type('Agungmtd123#')
     cy.wait(2000)
-    cy.get('#password-confirmation').type('Agungmtd')
+    cy.get('#password-confirmation').type('Agungmtd123#')
     registerPage.clickCreate()
     cy.wait(2000)
     cy.get('#firstname-error').should('contain', 'This is a required field.')
