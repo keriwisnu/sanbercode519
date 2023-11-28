@@ -1,3 +1,4 @@
+import updateProduct from "../../support/pageObject/UpdateProduct"
 describe('Search product', () => {
     beforeEach('login',() => {
         cy.wait(3000)
@@ -81,4 +82,28 @@ describe('Search product', () => {
             cy.get('.comparison-product').contains(productPrice).should('exist');
         })
     })
+    describe('Update Product - Edit Size', () => {
+        it('edit the size of the products in the cart', () => {
+          cy.visit('')
+          cy.login_data()
+          cy.Choose_Product()
+          updateProduct.clickCart();
+          updateProduct.dropdownCart();
+          updateProduct.toogle();
+          cy.get('.content > .product > :nth-child(2) > span').should('have.text',"S")
+          updateProduct.iconEdit();
+          cy.get('.base').should('have.text', 'Breathe-Easy Tank')
+          cy.get('#option-label-size-143-item-168').click()//size M
+          cy.wait(5000)
+          updateProduct.buttonEdit();
+          cy.wait(5000)
+          cy.get('.message-success').should('contain.text', 'Breathe-Easy Tank was updated in your shopping cart.')
+          updateProduct.logoLUMA();
+          cy.wait(5000)
+          updateProduct.clickCart();
+          updateProduct.dropdownCart();
+          updateProduct.toogle();
+          cy.get('.content > .product > :nth-child(2) > span').should('have.text',"M")
+          })
+        })
   })
