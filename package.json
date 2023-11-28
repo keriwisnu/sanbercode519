@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "login": "npx cypress run --browser chrome --spec 'cypress/e2e/web/magento/login.cy.js'",
-    "viewproduct": "npx cypress run --browser chrome --spec 'cypress/e2e/web/magento/viewproduct.cy.js'"
+    "viewproductChrome": "npx cypress run --browser chrome --spec 'cypress/e2e/web/magento/**.cy.js'",
+    "viewproductFirefox": "npx cypress run --browser firefox --spec 'cypress/e2e/web/magento/**.cy.js'"
   },
   "repository": {
     "type": "git",

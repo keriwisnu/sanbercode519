@@ -24,14 +24,23 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+const cypress = require('cypress');
 var loginUser = require('../fixtures/loginUser.json') 
-var { email, password } = loginUser;
+var { valid_email, valid_pass } = loginUser;
 
 Cypress.Commands.add('login', () => {
     cy.get('.panel > .header > .authorization-link').click()
     cy.get('#email').type(email)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2').click()
+})
+
+Cypress.Commands.add('login', (email,pass)=> {
+    cy.get('.panel > .header > .authorization-link').click()
+    cy.wait(20000)
+    cy.get('#email').type(loginUser.valid.valid_email)
+    cy.get('#pass').type(loginUser.valid.valid_pass)
+    cy.get('.action.login.primary').click()
 })
 
 Cypress.on('uncaught:exception', (err, runnable) => {
