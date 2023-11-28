@@ -4,7 +4,7 @@ describe("Submit Order", () => {
     beforeEach(() => {
         // Visit the login page and log in
         cy.visit('https://magento.softwaretestingboard.com/customer/account/login')
-        cy.login()
+        cy.loginr()
         cy.wait(500)
         cy.url().should("include", "/customer/account")
         //choose a product to purchase until checkout
