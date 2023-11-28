@@ -4,9 +4,7 @@
   "description": "sanbercode cypress project kelompok 9",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "viewproductChrome": "npx cypress run --browser chrome --spec 'cypress/e2e/web/magento/**.cy.js'",
-    "viewproductFirefox": "npx cypress run --browser firefox --spec 'cypress/e2e/web/magento/**.cy.js'"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,6 +17,6 @@
   },
   "homepage": "https://github.com/keriwisnu/sanbercode519#readme",
   "dependencies": {
-    "cypress": "^13.6.0"
+    "cypress": "^13.5.1"
   }
 }

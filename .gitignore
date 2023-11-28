@@ -1,6 +1,4 @@
 node_modules
 cypress/videos
 cypress/screenshots
-package-*.json
-1-getting-started
-2-advanced-examples
+js/*.js
