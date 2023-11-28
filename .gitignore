@@ -1,7 +1,7 @@
 node_modules
 cypress/videos
 cypress/screenshots
-js/*.js
 1-getting-started
 2-advanced-examples
 cypress/downloads
+package-*json
