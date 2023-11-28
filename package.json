@@ -6,6 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
+    "checkout":"npx cypress run --browser chrome --spec 'cypress/e2e/magento-ritter/SubmitOrder.cy.js'"
+=======
       "checkout":"npx cypress run --browser chrome --spec 'cypress/e2e/magento/Update_Products.cy.js'"
     },
   "author": "",
@@ -13,6 +16,7 @@
   "dependencies": {
     "cypress": "^13.6.0",
     "xpath": "^0.0.33"
+>>>>>>> 6dc7367fb558635e96a8032698256a927acbedee
   },
   "devDependencies": {
     "cypress-xpath": "^2.0.1"
@@ -203,6 +207,21 @@
   },
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
+  "bugs": {
+    "url": "https://github.com/keriwisnu/sanbercode519/issues"
+  },
+  "homepage": "https://github.com/keriwisnu/sanbercode519#readme",
+  "dependencies": {
+    "cypress": "^13.5.1"
+  },
+  "devDependencies": {
+    "chai-as-promised": "^7.1.1",
+    "cypress-xpath": "^2.0.1",
+    "prettier": "^3.0.0-alpha.6"
+  }
+=======
   "description": ""
 >>>>>>> 422cd48f43287f80bc058662189aa01e9dfc1852
+>>>>>>> 6dc7367fb558635e96a8032698256a927acbedee
 }

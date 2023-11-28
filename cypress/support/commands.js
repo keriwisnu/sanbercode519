@@ -12,6 +12,8 @@
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
 Cypress.Commands.add('register', (firstname, lastname, email, password, confirmpassw) => {
     cy.get('#firstname').type(firstname)
@@ -35,6 +37,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 =======
 >>>>>>> 3d33fdcb810d61e10b501aa54acdcf62a412f67c
 >>>>>>> 422cd48f43287f80bc058662189aa01e9dfc1852
+>>>>>>> 6dc7367fb558635e96a8032698256a927acbedee
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
@@ -48,6 +51,21 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 //
 //
 // -- This will overwrite an existing command --
+<<<<<<< HEAD
+// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('loginr', () => {
+    cy.get('#email').type(Cypress.env('username'))
+    cy.get('#pass').type(Cypress.env('password'))
+    cy.get('#send2').click()
+})
+
+Cypress.Commands.add('loginneg', () => {
+    cy.get('#email').type(Cypress.env('uneg'))
+    cy.get('#pass').type(Cypress.env('pasneg'))
+    cy.get('#send2').click()
+})
+
+=======
 <<<<<<< HEAD
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 var Login = require('../fixtures/data_login.json') 
@@ -96,13 +114,18 @@ Cypress.Commands.add('login', (email,pass)=> {
 })
 
 >>>>>>> 422cd48f43287f80bc058662189aa01e9dfc1852
+>>>>>>> 6dc7367fb558635e96a8032698256a927acbedee
 Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from
     // failing the test
     return false
+<<<<<<< HEAD
+})
+=======
 <<<<<<< HEAD
   })
 =======
   })
 >>>>>>> 3d33fdcb810d61e10b501aa54acdcf62a412f67c
 >>>>>>> 422cd48f43287f80bc058662189aa01e9dfc1852
+>>>>>>> 6dc7367fb558635e96a8032698256a927acbedee
