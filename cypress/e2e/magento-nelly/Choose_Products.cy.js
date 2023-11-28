@@ -1,7 +1,7 @@
 describe('choose product', () => {
     it('choose product', () => {
       cy.visit('')
-      cy.login()
+      cy.login_data()
       cy.get(':nth-child(2) > .product-item-info > .product-item-photo > .product-image-container > .product-image-wrapper > .product-image-photo').click()
       cy.wait(5000)
       cy.get('.base').should('have.text', 'Breathe-Easy Tank')

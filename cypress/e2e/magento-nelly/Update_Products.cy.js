@@ -6,7 +6,7 @@ const qty_plus = "+"
 describe('Update Product - Edit Size', () => {
   it('edit the size of the products in the cart', () => {
     cy.visit('')
-    cy.login()
+    cy.login_data()
     cy.Choose_Product()
     updateProduct.clickCart();
     updateProduct.dropdownCart();
@@ -31,7 +31,7 @@ describe('Update Product - Edit Size', () => {
   it('edit the product in the cart by unselecting the product size', () => {
     cy.visit('')
     cy.clearCookies()
-    cy.login()
+    cy.login_data()
     cy.wait(10000)
     // cy.Choose_Product()
     updateProduct.clickCart();
@@ -50,7 +50,7 @@ describe('Update Product - Edit Color', () => {
     it('edit the color of the products in the cart', () => {
       cy.visit('')
       cy.clearCookies()
-      cy.login()
+      cy.login_data()
       cy.get('.showcart').click()
       cy.get('#ui-id-1').should('be.visible')
       cy.get('.toggle').click()
@@ -72,7 +72,7 @@ describe('Update Product - Edit Color', () => {
 describe('Update Product - Edit Unselecting Products Color',()=>{
   it('edit the product in the cart by unselecting the product color', () => {
     cy.visit('')
-    cy.login()
+    cy.login_data()
     cy.clearCookies()
     updateProduct.clickCart();
     updateProduct.dropdownCart();
@@ -90,7 +90,7 @@ describe('Update Product - Edit Unselecting Products Color',()=>{
   describe('Update Product - Edit Qty',()=>{
         it('edit the qty of the products in the cart', () => {
           cy.visit('')
-          cy.login()
+          cy.login_data()
           updateProduct.clickCart();
           updateProduct.dropdownCart();
           updateProduct.iconEdit();
@@ -106,7 +106,7 @@ describe('Update Product - Edit Unselecting Products Color',()=>{
               describe('Update Product - Input Qty 0 ',()=>{
                 it('edit the products in the cart by providing input qty 0', () => {
                   cy.visit('')
-                  cy.login()
+                  cy.login_data()
                   updateProduct.clickCart();
                   updateProduct.dropdownCart();
                   updateProduct.iconEdit();
@@ -122,7 +122,7 @@ describe('Update Product - Edit Unselecting Products Color',()=>{
                 describe('Update Product - Input Qty with symbol + or -',()=>{
                   it('edit the products in the cart by providing input qty with symbol + or - ', () => {
                     cy.visit('')
-                    cy.login()
+                    cy.login_data()
                     updateProduct.clickCart();
                     updateProduct.dropdownCart();
                     cy.get('.product-item-details > .actions > .primary').click()
@@ -144,7 +144,7 @@ describe('Update Product - Edit Unselecting Products Color',()=>{
                   describe('Update Product - Delete',()=>{
                     it('Delete a product when there is only 1 product in the cart', () => {
                       cy.visit('')
-                      cy.login()
+                      cy.login_data()
                       updateProduct.clickCart();
                       updateProduct.dropdownCart();
                       updateProduct.iconDelete();
