@@ -25,6 +25,10 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   })
 
+  Cypress.Commands.add('verifyContain', (locator, value) => {
+    cy.get(locator).should('contain',value)
+})
+
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //

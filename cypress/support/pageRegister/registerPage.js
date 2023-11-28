@@ -2,24 +2,17 @@ class registerPage{
     firstnm = '#firstname'
     lastnm = '#lastname'
     crt_btn = '.action.submit.primary'
-    err_msg = '.message-error'
 
-    inputUsername(name){
+    inputFirstname(first_name){
         cy.get(this.firstnm).type(first_name)
     }
 
-    inputPassword(pass){
+    inputLastname(last_name){
         cy.get(this.lastnm).type(last_name)
     }
 
-    clickLogin(){
+    clickCreate(){
         cy.get(this.crt_btn).click()
     }
-
-    verifyError(message){
-        cy.verifyContain(this.err_msg,message)
-
-    }
-
 }
 export default new registerPage()

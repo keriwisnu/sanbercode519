@@ -7,7 +7,7 @@ import registerPage from "../../support/pageRegister/registerPage"
 
 // this case for positive case
 describe('positive case', () => {
-  beforeEach(() => {
+  beforeEach(() => {  
     cy.visit('')
 
   })
@@ -21,7 +21,7 @@ describe('positive case', () => {
     // cy.get('#password').type('Dianfilia123#')
     // cy.get('#password-confirmation').type('Dianfilia123#')
     // cy.get('.action.submit.primary').click()
-    cy.get(registerPage.crt_btn).click()
+    registerPage.clickCreate()
     cy.wait(2000)
     cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
     cy.wait(2000)
@@ -38,8 +38,8 @@ describe('negative case', () => {
   it('using the same email', () => {
     // create user failed due to using the same email
     cy.fixture('userData.json').then((userData) => {
-      cy.get('#firstname').type(userData.firstname)
-      cy.get('#lastname').type(userData.lastname)
+      registerPage.inputFirstname(userData.firstname)
+      registerPage.inputLastname(userData.lastname)
     })
     cy.wait(2000)
     cy.get('#email_address').type('dianmatondang012@gmail.com')
@@ -48,7 +48,7 @@ describe('negative case', () => {
     cy.wait(2000)
     cy.get('#password-confirmation').type('Agungmtd123#')
     cy.wait(2000)
-    cy.get(registerPage.crt_btn).click()
+    registerPage.clickCreate()
     cy.wait(2000)
     cy.get('.message-error').should('contain', 'There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.')
     cy.wait(2000)
@@ -68,7 +68,7 @@ describe('negative case', () => {
     cy.wait(2000)
     cy.get('#password-confirmation').type('Agungmtd')
     cy.wait(2000)
-    cy.get(registerPage.crt_btn).click()
+    registerPage.clickCreate()
     cy.wait(2000)
     cy.get('#password-error').should('contain', 'Minimum of different classes of characters in password is 3. Classes of characters: Lower Case, Upper Case, Digits, Special Characters.')
     cy.wait(2000)
@@ -80,8 +80,8 @@ describe('negative case', () => {
   it('different password length', () => {
     // create user failed because the length of the password and confirm password are different
     cy.fixture('userData.json').then((userData) => {
-      cy.get('#firstname').type(userData.firstname)
-      cy.get('#lastname').type(userData.lastname)
+      registerPage.inputFirstname(userData.firstname)
+      registerPage.inputLastname(userData.lastname)
     })
     cy.wait(2000)
     cy.get('#email_address').type('dianmatondang112@gmail.com')
@@ -90,7 +90,7 @@ describe('negative case', () => {
     cy.wait(2000)
     cy.get('#password-confirmation').type('Dianmtd')
     cy.wait(2000)
-    cy.get(registerPage.crt_btn).click()
+    registerPage.clickCreate()
     cy.wait(2000)
     cy.get('#password-confirmation-error').should('contain', 'Please enter the same value again.')
     cy.wait(2000)
@@ -101,8 +101,8 @@ describe('negative case', () => {
   it('different password', () => {
     // create user failed because the password and confirm password are different
     cy.fixture('userData.json').then((userData) => {
-      cy.get('#firstname').type(userData.firstname)
-      cy.get('#lastname').type(userData.lastname)
+      registerPage.inputFirstname(userData.firstname)
+      registerPage.inputLastname(userData.lastname)
     })
     cy.wait(2000)
     cy.get('#email_address').type('dianmatondang112@gmail.com')
@@ -111,7 +111,7 @@ describe('negative case', () => {
     cy.wait(2000)
     cy.get('#password-confirmation').type('Dianmtd123@')
     cy.wait(2000)
-    cy.get(registerPage.crt_btn).click()
+    registerPage.clickCreate()
     cy.wait(2000)
     cy.get('#password-confirmation-error').should('contain', 'Please enter the same value again.')
     cy.wait(2000)
@@ -126,7 +126,7 @@ describe('negative case', () => {
     cy.get('#password').type('Agungmtd')
     cy.wait(2000)
     cy.get('#password-confirmation').type('Agungmtd')
-    cy.get(registerPage.crt_btn).click()
+    registerPage.clickCreate()
     cy.wait(2000)
     cy.get('#firstname-error').should('contain', 'This is a required field.')
     cy.wait(2000)
@@ -139,15 +139,15 @@ describe('negative case', () => {
   it('empty email', () => {
     // create user failed due to missing email
     cy.fixture('userData.json').then((userData) => {
-      cy.get(registerPage.firstnm).type(userData.firstname)
-      cy.get(registerPage.lastnm).type(userData.lastname)
+      registerPage.inputFirstname(userData.firstname)
+      registerPage.inputLastname(userData.lastname)
     })
     cy.wait(2000)
     cy.get('#password').type('Agungmtd123#')
     cy.wait(2000)
     cy.get('#password-confirmation').type('Agungmtd123#')
     cy.wait(2000)
-    cy.get(registerPage.crt_btn).click()
+    registerPage.clickCreate()
     cy.wait(2000)
     cy.get('#email_address-error').should('contain', 'This is a required field.')
     cy.wait(2000)
@@ -158,15 +158,15 @@ describe('negative case', () => {
   it('empty password', () => {
     // create user failed because password was not filled in
     cy.fixture('userData.json').then((userData) => {
-      cy.get(registerPage.firstnm).type(userData.firstname)
-      cy.get(registerPage.lastnm).type(userData.lastname)
+      registerPage.inputFirstname(userData.firstname)
+      registerPage.inputLastname(userData.lastname)
     })
     cy.wait(2000)
     cy.get('#email_address').type('dianmatondang112@gmail.com')
     cy.wait(2000)
     cy.get('#password-confirmation').type('Agungmtd123#')
     cy.wait(2000)
-    cy.get(registerPage.crt_btn).click()
+    registerPage.clickCreate()
     cy.wait(2000)
     cy.get('#password-error').should('contain', 'This is a required field.')
     cy.wait(2000)
@@ -177,15 +177,15 @@ describe('negative case', () => {
   it('empty confirm password', () => {
     // create user failed because confirm password was not filled in
     cy.fixture('userData.json').then((userData) => {
-      cy.get(registerPage.firstnm).type(userData.firstname)
-      cy.get(registerPage.lastnm).type(userData.lastname)
+      registerPage.inputFirstname(userData.firstname)
+      registerPage.inputLastname(userData.lastname)
     })
     cy.wait(2000)
     cy.get('#email_address').type('dianmatondang112@gmail.com')
     cy.wait(2000)
     cy.get('#password').type('Agungmtd123#')
     cy.wait(2000)
-    cy.get(registerPage.crt_btn).click()
+    registerPage.clickCreate()
     cy.wait(2000)
     cy.get('#password-confirmation-error').should('contain', 'This is a required field.')
     cy.wait(2000)
