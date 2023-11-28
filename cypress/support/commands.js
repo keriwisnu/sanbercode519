@@ -29,6 +29,12 @@ Cypress.Commands.add('login', () => {
     cy.get('#send2').click()
 })
 
+Cypress.Commands.add('loginneg', () => {
+    cy.get('#email').type(Cypress.env('uneg'))
+    cy.get('#pass').type(Cypress.env('pasneg'))
+    cy.get('#send2').click()
+})
+
 Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from
     // failing the test

@@ -12,7 +12,10 @@ module.exports = defineConfig({
     experimentalStudio: true,
     env: {
       username: "ritter@tester.com",
-      password: "Sanber51"
+      password: "Sanber51",
+      uneg: "testnoaddress@tester.com",
+      pasneg: "Test2023!"
     },
+
   },
 });
