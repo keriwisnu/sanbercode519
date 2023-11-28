@@ -4,7 +4,8 @@
   "description": "sanbercode cypress project kelompok 9",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "selectProduct":"npx cypress run --browser chrome --spec 'cypress/e2e/magento-keri/selectProduct.cy.js'"
   },
   "repository": {
     "type": "git",
