@@ -1,4 +1,24 @@
 {
+<<<<<<< HEAD
+  "name": "cypress_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+      "checkout":"npx cypress run --browser chrome --spec 'cypress/e2e/magento/Update_Products.cy.js'"
+    },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.6.0",
+    "xpath": "^0.0.33"
+  },
+  "devDependencies": {
+    "cypress-xpath": "^2.0.1"
+  }
+  
+=======
   "devDependencies": {
     "cypress": "^13.6.0"
   },
@@ -184,4 +204,5 @@
   "author": "",
   "license": "ISC",
   "description": ""
+>>>>>>> 422cd48f43287f80bc058662189aa01e9dfc1852
 }
