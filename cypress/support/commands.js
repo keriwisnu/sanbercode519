@@ -24,32 +24,23 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
- /// <reference types="Cypress" />
+const cypress = require('cypress');
+var loginUser = require('../fixtures/loginUser.json') 
+var { valid_email, valid_pass } = loginUser;
 
-
-
-
-var userLogin = require('../fixtures/userLogin.json') 
-var { email, password } = userLogin;
-
-//cara login 1
-Cypress.Commands.add('login1', () => {
+Cypress.Commands.add('login', () => {
     cy.get('.panel > .header > .authorization-link').click()
-    cy.wait(2000)
     cy.get('#email').type(email)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
     cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2').click()
-    cy.wait(2000)
 })
 
-//cara login 2
-Cypress.Commands.add('login2', (email, password) => {
+Cypress.Commands.add('login', (email,pass)=> {
     cy.get('.panel > .header > .authorization-link').click()
-    cy.wait(2000)
-    cy.get('#email').type(email)
-    cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .password > .control > #pass').type(password)
-    cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2 > span').click()
-    cy.wait(2000)
+    cy.wait(20000)
+    cy.get('#email').type(loginUser.valid.valid_email)
+    cy.get('#pass').type(loginUser.valid.valid_pass)
+    cy.get('.action.login.primary').click()
 })
 
 Cypress.on('uncaught:exception', (err, runnable) => {
