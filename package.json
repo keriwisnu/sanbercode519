@@ -1,25 +1,20 @@
 {
-  "name": "sanbercode519",
+  "name": "cypress_project",
   "version": "1.0.0",
-  "description": "sanbercode cypress project kelompok 9",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/keriwisnu/sanbercode519.git"
-  },
+    "test": "echo \"Error: no test specified\" && exit 1",
+      "checkout":"npx cypress run --browser chrome --spec 'cypress/e2e/magento/Update_Products.cy.js'"
+    },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/keriwisnu/sanbercode519/issues"
-  },
-  "homepage": "https://github.com/keriwisnu/sanbercode519#readme",
   "dependencies": {
-    "cypress": "^13.5.1"
+    "cypress": "^13.6.0",
+    "xpath": "^0.0.33"
   },
   "devDependencies": {
     "cypress-xpath": "^2.0.1"
   }
+  
 }
