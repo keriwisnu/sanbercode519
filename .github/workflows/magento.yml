@@ -10,7 +10,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-          spec: cypress/e2e/1-getting-started/todo.cy.js
+          spec: cypress/e2e/kelompok9.cy.js
       - uses: actions/upload-artifact@v3
         with:
           name: cypress-screenshots
