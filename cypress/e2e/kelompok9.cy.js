@@ -137,7 +137,7 @@ describe('End to End', () => {
         cy.get('.order-number').should('exist')
         cy.get('.checkout-success > .actions-toolbar > div.primary > .action > span').should('exist').and('have.text', 'Continue Shopping')
     });
-    it.only("logout, remove all cache", () => {
+    it("logout, remove all cache", () => {
         cy.visit('')
         cy.xpath('/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button').click()
         cy.xpath('/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[3]/a').click()
