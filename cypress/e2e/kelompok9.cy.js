@@ -7,18 +7,18 @@ import updateProduct from "../support/pageObject/UpdateProduct"
 import registerPage from "../support/pageRegister/registerPage"
 
 //register
-// describe('create account', () => {
-//     it('success create user', () => {
-//         cy.visit('')
-//         cy.get('.panel > .header > :nth-child(3) > a').click()
-//         cy.register('Dian', 'Matondang', 'dianmatondang012@gmail.com', 'Dianfilia123#', 'Dianfilia123#')
-//         cy.wait(2000)
-//         registerPage.clickCreate()
-//         cy.wait(2000)
-//         cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
-//         cy.wait(2000)
-//     });
-// })
+describe('create account', () => {
+    it('success create user', () => {
+        cy.visit('')
+        cy.get('.panel > .header > :nth-child(3) > a').click()
+        cy.register('Dian', 'Matondang', 'dianmatondang012@gmail.com', 'Dianfilia123#', 'Dianfilia123#')
+        cy.wait(2000)
+        registerPage.clickCreate()
+        cy.wait(2000)
+        cy.url().should('include', 'https://magento.softwaretestingboard.com/customer/account/')
+        cy.wait(2000)
+    });
+})
 
 describe('End to End', () => {
     //login
