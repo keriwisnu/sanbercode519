@@ -12,6 +12,10 @@
 
 var userLogin = require('../fixtures/userLogin.json') 
 var { email, password } = userLogin;
+var loginUser = require('../fixtures/loginUser.json') 
+var { valid_email, valid_pass } = loginUser;
+var Login = require('../fixtures/data_login.json') 
+var { email, password } = Login;
 
 Cypress.Commands.add('login1', () => {
     cy.get('.panel > .header > .authorization-link').click()
@@ -46,27 +50,25 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   })
 
-  Cypress.Commands.add('verifyContain', (locator, value) => {
+Cypress.Commands.add('verifyContain', (locator, value) => {
     cy.get(locator).should('contain',value)
 })
 
+//commended because create error when running all process
 Cypress.Commands.add('loginr', () => {
     cy.get('#email').type(Cypress.env('username'))
     cy.get('#pass').type(Cypress.env('password'))
     cy.get('#send2').click()
 })
 
+//commended because create error when running all process
 Cypress.Commands.add('loginneg', () => {
     cy.get('#email').type(Cypress.env('uneg'))
     cy.get('#pass').type(Cypress.env('pasneg'))
     cy.get('#send2').click()
 })
 
-const cypress = require('cypress');
-var loginUser = require('../fixtures/loginUser.json') 
-var { valid_email, valid_pass } = loginUser;
-var Login = require('../fixtures/data_login.json') 
-var { email, password } = Login;
+
 
 Cypress.Commands.add('login_data', () => {
     cy.get('.panel > .header > .authorization-link').click()

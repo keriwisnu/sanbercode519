@@ -10,7 +10,7 @@ class updateProduct{
         cy.get('#ui-id-1').should('be.visible')
     }
     toogle(){
-        cy .get('.toggle').click()
+        cy.get('.toggle').click()
     }
     verifySizeS(){
         cy.get('.content > .product > :nth-child(2) > span').should('have.text',"S")
@@ -25,7 +25,7 @@ class updateProduct{
         cy.get('.product > :nth-child(4) > span').should('have.text',"White")
     }
     iconEdit(){
-        cy.get('.product-item-details > .actions > .primary').click()
+        cy.get('.action-edit').click()
     }
     iconDelete(){
         cy.get(':nth-child(1) > :nth-child(1) > .product-item-details > .actions > .secondary > .action').click()
